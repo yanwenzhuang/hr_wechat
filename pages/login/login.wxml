@@ -1,0 +1,57 @@
+<!--pages/login/login.wxml-->
+<view class="container"></view>
+
+<view class="tab_wrap">
+  <view wx:for="{{tabs}}" wx:key='index' 
+    class="tab {{currentTab == item ? 'tab_active': ''}}"
+    bindtap='switchTab' id="{{item}}"
+  >
+    {{item}}
+  </view>
+</view>
+
+<view class="form" wx:if="{{currentTab == '登录'}}">
+  <form  bindsubmit="loginSubmit" >
+    <view>
+      <input type="text" name="user" placeholder-class="input_placeholder" placeholder="请输入手机号码" />
+    </view>
+    <view class="password">
+      <input value='{{password}}' password='{{isPassword}}' name="password" placeholder-class="input_placeholder" placeholder="请输入密码" />
+      <!-- <image  src="{{isPassword ? '/images/close.png' : '/images/open.png' }}"></image> -->
+      <image bindtap='showPassword' class="password_icon" src="../../image/password.svg"></image>
+      <text bindtap="forgetPassword">忘记密码？</text>
+    </view>
+    <button class="submit" formType="submit">登录</button>
+  </form>
+</view>
+
+<view class="form register_form" wx:if="{{currentTab == '注册'}}">
+  <form bindsubmit="registerSubmit" >
+    <view>
+      <input type="text" name="user" placeholder-class="input_placeholder" placeholder="请输入手机号码" />
+    </view>
+    <view>
+      <input type="password" name="password" placeholder-class="input_placeholder" placeholder="请输入密码" />
+    </view>
+    <view >
+      <input type="password" name="password" placeholder-class="input_placeholder" placeholder="请输入验证码" />
+    </view>
+    <view class="code">
+      <input type="text" name="text" placeholder-class="input_placeholder" placeholder="请输入密码" />
+      <view catchtap="getVerificationCode" class="get_verification_code">
+        <text >获取验证码</text>
+      </view>
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" >
+          <checkbox class="wx-checkbox-input wx-checkbox-input-checked"/>
+          <text catchtap="readPrivacyPolicy">已阅读并同意《埃森哲隐私政策》</text>
+          </label>
+      </checkbox-group>
+      <!-- <switch type="checkbox" color="rgba(121, 72, 234, 100)"/>
+      <text class="policy">已阅读并同意《埃森哲隐私政策》</text> -->
+    </view>
+    <button class="submit" formType="submit">确认注册</button>
+  </form>
+</view>
+
+

@@ -1,0 +1,108 @@
+/* pages/login/login.wxss */
+.container{
+  width: 100%;
+  height: 250rpx;
+  background: rgba(121, 72, 234, 100);
+}
+.tab_wrap{
+  display: flex;
+  flex-direction: row;
+  margin: 10rpx 40rpx;
+}
+.tab_wrap .tab{
+  flex: 1;
+  font-size: 16px;
+  color: rgba(128, 128, 128, 100);
+  text-align: center;
+  line-height: 80rpx;
+}
+.tab_wrap .tab_active{
+  color: rgba(121, 72, 234, 100);
+  border-bottom: 5rpx solid rgba(121, 72, 234, 100);
+  font-weight: bold;
+}
+.form{
+  margin: 70rpx 40rpx;
+}
+.register_form{
+  margin: 37rpx 40rpx;
+}
+.form input{
+  height: 80rpx;
+  margin-top: 50rpx;
+  padding-left: 16rpx;
+  border-bottom: 1px solid rgba(153,153,153,100);
+  font-size: 34rpx;
+}
+.input_placeholder{
+  color: #999;
+}
+.register_form input{
+  height: 75rpx;
+  margin-top: 28rpx;
+}
+.form .password{
+  position: relative;
+}
+.form .password text{
+  position: absolute;
+  right: 0;
+  font-size: 30rpx;
+  margin-top: 5rpx;
+  color: rgba(121, 72, 234, 100);
+}
+.form .password_icon{
+	width: 48rpx;
+	height: 48rpx;
+  position: absolute;
+  right: 45rpx;
+  top: 23rpx;
+  z-index: 100;
+}
+.form .submit{
+  width: 100%;
+  border-radius: 0;
+  color: #fff;
+  margin-top: 145rpx;
+  font-weight: 300;
+  background: rgba(121, 72, 234, 100);
+}
+.register_form checkbox-group{
+  zoom: 0.7;
+  margin-top: 20rpx;
+  font-size: 38rpx;
+  color: rgba(121,72,234,100);
+}
+.register_form checkbox{
+  vertical-align: top;
+  line-height: 40rpx;
+  border: rgba(121, 72, 234, 100);
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: rgba(121, 72, 234, 100);
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  color: #fff;
+}
+.register_form .submit{
+  margin-top: 55rpx;
+}
+.register_form .code{
+  position: relative;
+}
+.register_form .code .get_verification_code{
+  position: absolute;
+  right: 0;
+  bottom: -37;
+  top: 3rpx;
+  background: rgba(121, 72, 234, 100);
+  color: #fff;
+  font-size: 28rpx;
+  padding: 15rpx;
+  border-radius: 16rpx;
+  z-index: 100;
+}
+
+
