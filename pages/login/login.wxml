@@ -34,16 +34,16 @@
       <input type="password" name="password" placeholder-class="input_placeholder" placeholder="请输入密码" />
     </view>
     <view >
-      <input type="password" name="password" placeholder-class="input_placeholder" placeholder="请输入验证码" />
+      <input type="password" name="repassword" placeholder-class="input_placeholder" placeholder="请输入密码" />
     </view>
     <view class="code">
-      <input type="text" name="text" placeholder-class="input_placeholder" placeholder="请输入密码" />
+      <input type="text" name="verification" placeholder-class="input_placeholder" placeholder="请输入验证码" />
       <view catchtap="getVerificationCode" class="get_verification_code">
         <text >获取验证码</text>
       </view>
-      <checkbox-group bindchange="checkboxChange">
+      <checkbox-group bindchange="checkboxChange" name="checkboxgroup">
         <label class="checkbox" >
-          <checkbox class="wx-checkbox-input wx-checkbox-input-checked"/>
+          <checkbox name="checkbox" value="true" class="wx-checkbox-input wx-checkbox-input-checked" checked="{{checked}}"/>
           <text catchtap="readPrivacyPolicy">已阅读并同意《埃森哲隐私政策》</text>
           </label>
       </checkbox-group>

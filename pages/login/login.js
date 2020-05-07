@@ -7,7 +7,8 @@ Page({
   data: {
     currentTab:'登录',
     tabs:['登录','注册'],
-    isPassword: true
+    isPassword: true,
+    checked: true
   },
 
   /**
@@ -23,10 +24,38 @@ Page({
     });
   },
   loginSubmit: function(e){
-    console.log("登录操作");
+    let regex = /^\d+$/g;
+    let format = !regex.test(e.detail.value.user);
+    if (e.detail.value.user.length !== 11 || format ){
+      wx.showToast({
+        title: '手机号码或者密码输入不正确，请重新填写，如忘记密码，请重新设置。',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+   
+    console.log("登录成功");
   },
   registerSubmit: function(e){
-    console.log("注册操作");
+    let _this = this;
+    if (this.data.checked === false){
+      wx.showToast({
+        title: '请勾选同意埃森哲隐私政策。',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    wx.showModal({
+      title: '提示',
+      content: '注册成功',
+      success(res) {
+        _this.setData({
+          currentTab:'登录'
+        })
+      }
+    })
   },
   showPassword: function(e){
     let isPassword = !this.data.isPassword;
@@ -35,6 +64,15 @@ Page({
     })
   },
   checkboxChange: function(e){
+    let checked;
+    if(e.detail.value == ''){
+      checked = false;
+    }else{
+      checked = true;
+    }
+  this.setData({
+    checked
+  })
   },
   forgetPassword: function(e){
     console.log("忘记密码");
