@@ -39,11 +39,8 @@
     <view class="code">
       <input type="number" name="verification" placeholder-class="input_placeholder" placeholder="请输入验证码" />
 
-      <view catchtap="getVerificationCode" class="get_verification_code">
+      <view catchtap="getVerificationCode" class="get_verification_code {{sendCaptchaStatus?'send':'nosend'}}" >
         <text >{{getCaptchaTitle}}</text>
-      <!-- <view wx:if="{{verificationCode == false}}" catchtap="getVerificationCode" class="get_verification_code">
-        <text >获取验证码</text> -->
-
       </view>
       <checkbox-group bindchange="checkboxChange" name="checkboxgroup" >
         <label class="checkbox" >
