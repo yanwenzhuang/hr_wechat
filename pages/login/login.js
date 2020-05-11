@@ -1,14 +1,18 @@
 // pages/login/login.js
 Page({
 
+
   /**
    * 页面的初始数据
    */
   data: {
-    currentTab:'登录',
-    tabs:['登录','注册'],
+    currentTab: '登录',
+    tabs: ['登录', '注册'],
     isPassword: true,
-    checked: true
+    checked: true,
+    getCaptchaTitle: '获取验证码',
+    sendCaptchaStatus: false,
+    sendCaptchaTime: 60,
   },
 
   /**
@@ -17,16 +21,16 @@ Page({
   onLoad: function (options) {
 
   },
-  switchTab: function(e){
+  switchTab: function (e) {
     let currentTab = e.currentTarget.id;
     this.setData({
       currentTab
     });
   },
-  loginSubmit: function(e){
+  loginSubmit: function (e) {
     let regex = /^\d+$/g;
     let format = !regex.test(e.detail.value.user);
-    if (e.detail.value.user.length !== 11 || format ){
+    if (e.detail.value.user.length !== 11 || format) {
       wx.showToast({
         title: '手机号码或者密码输入不正确，请重新填写，如忘记密码，请重新设置。',
         icon: 'none',
@@ -34,12 +38,12 @@ Page({
       })
       return;
     }
-   
+
     console.log("登录成功");
   },
-  registerSubmit: function(e){
+  registerSubmit: function (e) {
     let _this = this;
-    if (this.data.checked === false){
+    if (this.data.checked === false) {
       wx.showToast({
         title: '请勾选同意埃森哲隐私政策。',
         icon: 'none',
@@ -52,35 +56,56 @@ Page({
       content: '注册成功',
       success(res) {
         _this.setData({
-          currentTab:'登录'
+          currentTab: '登录'
         })
       }
     })
   },
-  showPassword: function(e){
+  showPassword: function (e) {
     let isPassword = !this.data.isPassword;
     this.setData({
       isPassword
     })
   },
-  checkboxChange: function(e){
+  checkboxChange: function (e) {
     let checked;
-    if(e.detail.value == ''){
+    if (e.detail.value == '') {
       checked = false;
-    }else{
+    } else {
       checked = true;
     }
-  this.setData({
-    checked
-  })
+    this.setData({
+      checked
+    })
   },
-  forgetPassword: function(e){
+  forgetPassword: function (e) {
     console.log("忘记密码");
   },
-  getVerificationCode: function(e){
-    console.log("获取验证码");
+  getVerificationCode: function (e) {
+    if(this.data.sendCaptchaStatus){
+      return ;
+    }
+    this.setData({
+      sendCaptchaStatus : true
+    });
+    console.log(this.sendMailStatus);
+    const start = setInterval(() => {
+      if (this.data.sendCaptchaTime >= 0) {
+        this.setData({
+          getCaptchaTitle:'验证码已发送，' + this.data.sendCaptchaTime + '秒后可重发',
+          sendCaptchaTime:this.data.sendCaptchaTime-1
+        })
+      } else {
+        clearInterval(start);
+        this.setData({
+          getCaptchaTitle:'重新发送',
+          sendCaptchaStatus:false,
+          sendCaptchaTime:60,
+        })
+      }
+    }, 1000);
   },
-  readPrivacyPolicy: function(e){
+  readPrivacyPolicy: function (e) {
     console.log("阅读公司隐私政策");
   },
 
