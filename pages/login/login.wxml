@@ -13,7 +13,7 @@
 <view class="form" wx:if="{{currentTab == '登录'}}">
   <form  bindsubmit="loginSubmit" >
     <view>
-      <input type="text" name="user" placeholder-class="input_placeholder" placeholder="请输入手机号码" />
+      <input type="number" name="user" placeholder-class="input_placeholder" placeholder="请输入手机号码" />
     </view>
     <view class="password">
       <input value='{{password}}' password='{{isPassword}}' name="password" placeholder-class="input_placeholder" placeholder="请输入密码" />
@@ -28,7 +28,7 @@
 <view class="form register_form" wx:if="{{currentTab == '注册'}}">
   <form bindsubmit="registerSubmit" >
     <view>
-      <input type="text" name="user" placeholder-class="input_placeholder" placeholder="请输入手机号码" />
+      <input type="number" name="user" placeholder-class="input_placeholder" placeholder="请输入手机号码" />
     </view>
     <view>
       <input type="password" name="password" placeholder-class="input_placeholder" placeholder="请输入密码" />
@@ -37,13 +37,10 @@
       <input type="password" name="repassword" placeholder-class="input_placeholder" placeholder="请输入密码" />
     </view>
     <view class="code">
-      <input type="text" name="verification" placeholder-class="input_placeholder" placeholder="请输入验证码" />
+      <input type="number" name="verification" placeholder-class="input_placeholder" placeholder="请输入验证码" />
 
-      <view catchtap="getVerificationCode" class="get_verification_code">
+      <view catchtap="getVerificationCode" class="get_verification_code {{sendCaptchaStatus?'send':'nosend'}}" >
         <text >{{getCaptchaTitle}}</text>
-      <!-- <view wx:if="{{verificationCode == false}}" catchtap="getVerificationCode" class="get_verification_code">
-        <text >获取验证码</text> -->
-
       </view>
       <checkbox-group bindchange="checkboxChange" name="checkboxgroup" >
         <label class="checkbox" >
