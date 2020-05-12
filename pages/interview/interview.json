@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "inform_item":"../../components/inform_item/inform_item"
+  },
+  "navigationBarTitleText": "面试"
+}

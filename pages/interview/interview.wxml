@@ -1,0 +1,22 @@
+<image src="../../asset/ac_u52.png" class="image-header"></image>
+
+<view class="tab-wrap">
+  <view wx:for="{{tabs}}" wx:key='index' 
+    class="tab {{currentTab == item ? 'tab-active': ''}}"
+    bindtap='switchTab' id="{{item}}"
+  >
+    {{item}}
+  </view>
+</view>
+
+<view class="switch-tab" wx:if="{{currentTab == '通知'}}">
+  <block wx:for="{{informList}}" wx:key="item">
+    <inform_item detail="{{item}}" bindtap="informDetail" data-detail="{{item}}"/>
+  </block>
+</view>
+
+<view class="" wx:if="{{currentTab == '待办'}}">
+  <text>待办页面</text>
+</view>
+
+

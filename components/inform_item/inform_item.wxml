@@ -1,0 +1,23 @@
+<!--components/inform_item/inform_item.wxml-->
+<view class="wrap">
+    <view class="first">
+      <image src="../../asset/ac_u78.png"></image>
+      <text class="title">{{detail.title}}</text>
+      <text class="time">{{m1.getProcesses(detail.time)}}</text>
+    </view>
+    <view class="second">
+      <text>{{detail.content}}</text>
+    </view>
+  </view>
+
+
+
+<wxs module="m1">
+  var getProcesses = function(data){
+    if (!data) {
+    return '';
+    }
+    return data.slice(11)
+  }
+  module.exports.getProcesses = getProcesses;
+</wxs>

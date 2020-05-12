@@ -1,0 +1,26 @@
+/* components/inform_item/inform_item.wxss */
+.wrap{
+  border-bottom: 1px solid #000;
+}
+.wrap .first{
+  position: relative;
+  margin: 20rpx 40rpx 0 40rpx;
+}
+.wrap .first .title{
+  margin-left: 5rpx;
+}
+.wrap .first .time{
+  position: absolute;
+  right: 10rpx;
+}
+.wrap .second{
+  word-break: keep-all;
+  word-wrap: break-word;
+  white-space: pre-line;
+  margin: 20rpx 55rpx;
+}
+
+.wrap .first image{
+  width: 32rpx;
+  height: 32rpx;
+}

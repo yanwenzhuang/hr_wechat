@@ -1,0 +1,11 @@
+<!--pages/interview/inform_detail/inform_detail.wxml-->
+<view class="container">
+  <view class="title">{{title}}</view>
+  <view class="time">{{time}}</view>
+  <view class="content">{{content}}</view>
+  <view class="inform-button">
+    <button class="submit">接受</button>
+    <button class="reject">拒绝</button>
+  </view>
+  <view class="todolist">放入待办，稍后处理</view>
+</view>
